@@ -50,10 +50,7 @@ export function Services() {
                     <span className="card-index">{service.index}</span>
                     <h3>{service.title}</h3>
                   </div>
-                  <div>
-                    <p>{service.text}</p>
-                    {service.featured ? <span className="badge">Inclusa em todo sistema</span> : null}
-                  </div>
+                  <p>{service.text}</p>
                 </article>
               </div>
             ))}

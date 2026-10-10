@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { nav, links, COMPANY, CNPJ, WA_DEFAULT } from "@/lib/site";
@@ -18,11 +18,25 @@ const rail = [
   { href: "/#contato", label: "Contato" },
 ];
 
+const places: Record<string, string> = {
+  "/#servicos": "Serviços",
+  "/#metodo": "D360",
+  "/#filosofia": "Filosofia",
+  "/#fundadora": "Fundadora",
+  "/#stack": "Stack",
+  "/#contato": "Contato",
+  "/portfolio": "Portfólio",
+  "/blog": "Blog",
+  "/diagnostico": "Diagnóstico",
+};
+
 export function Shell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState("");
   const navRef = useRef<HTMLElement>(null);
+  const linksRef = useRef<HTMLElement>(null);
+  const gliderRef = useRef<HTMLSpanElement>(null);
   const barRef = useRef<HTMLDivElement>(null);
   const cursorRef = useRef<HTMLDivElement>(null);
   const preRef = useRef<HTMLDivElement>(null);
@@ -30,6 +44,13 @@ export function Shell({ children }: { children: React.ReactNode }) {
   const countRef = useRef<HTMLSpanElement>(null);
   const fillRef = useRef<HTMLElement>(null);
   const home = pathname === "/";
+  const place = home ? (places[active] ?? "Início") : (places[pathname] ?? "aiion");
+
+  const moveNav = (event: React.MouseEvent<HTMLElement>) => {
+    const rect = event.currentTarget.getBoundingClientRect();
+    event.currentTarget.style.setProperty("--mx", `${event.clientX - rect.left}px`);
+    event.currentTarget.style.setProperty("--my", `${event.clientY - rect.top}px`);
+  };
 
   useEffect(() => {
     setOpen(false);
@@ -105,29 +126,52 @@ export function Shell({ children }: { children: React.ReactNode }) {
       const max = document.documentElement.scrollHeight - window.innerHeight;
       const progress = max > 0 ? window.scrollY / max : 0;
       if (barRef.current) barRef.current.style.width = `${progress * 100}%`;
-      navRef.current?.classList.toggle("solid", window.scrollY > 8);
+      navRef.current?.classList.toggle("solid", window.scrollY > 48);
     };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, [pathname]);
 
+  useLayoutEffect(() => {
+    const root = linksRef.current;
+    const glider = gliderRef.current;
+    if (!root || !glider) return;
+    const placeGlider = () => {
+      const current = root.querySelector<HTMLElement>("a.active");
+      if (!current || getComputedStyle(root).display === "none") {
+        glider.style.opacity = "0";
+        return;
+      }
+      glider.style.opacity = "1";
+      glider.style.width = `${current.offsetWidth}px`;
+      glider.style.transform = `translateX(${current.offsetLeft}px)`;
+    };
+    placeGlider();
+    const observer = new ResizeObserver(placeGlider);
+    observer.observe(root);
+    return () => observer.disconnect();
+  }, [pathname, active, open]);
+
   useEffect(() => {
     if (!home) return;
-    const sections = rail
-      .map((item) => document.querySelector(item.href.replace("/", "")))
-      .filter((node): node is Element => Boolean(node));
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-        if (visible) setActive(`/#${visible.target.id}`);
-      },
-      { rootMargin: "-40% 0px -45% 0px", threshold: [0.15, 0.4] },
-    );
-    sections.forEach((section) => observer.observe(section));
-    return () => observer.disconnect();
+    const mark = () => {
+      const line = window.innerHeight * 0.34;
+      let current = "";
+      for (const item of rail) {
+        const section = document.querySelector(item.href.slice(1));
+        if (!section) continue;
+        if (section.getBoundingClientRect().top <= line) current = item.href;
+      }
+      setActive((prev) => (prev === current ? prev : current));
+    };
+    mark();
+    window.addEventListener("scroll", mark, { passive: true });
+    window.addEventListener("resize", mark);
+    return () => {
+      window.removeEventListener("scroll", mark);
+      window.removeEventListener("resize", mark);
+    };
   }, [home]);
 
   useEffect(() => {
@@ -189,7 +233,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
           <div className="pre-top">
             <div>
               <p className="pre-kicker">aiion // sistema</p>
-              <img src="/images/logo.png" alt="aiion" style={{ height: 48, marginTop: 12 }} />
+              <img src="/images/logo.svg" alt="aiion" style={{ height: 48, marginTop: 12 }} />
             </div>
             <span className="pre-count" ref={countRef}>
               000
@@ -204,19 +248,29 @@ export function Shell({ children }: { children: React.ReactNode }) {
         </div>
       </div>
 
-      <header className="nav" ref={navRef}>
-        <Link href="/" className="brand" aria-label="aiion, início">
-          <img src="/images/logo.png" alt="aiion" />
-        </Link>
-        <nav className="nav-links" aria-label="Principal">
-          {nav.map((item) => (
-            <Link key={item.href} href={item.href} className={pathname === item.href ? "active" : ""}>
-              {item.label}
-            </Link>
-          ))}
+      <header className={`nav${open ? " open" : ""}`} ref={navRef} onMouseMove={moveNav}>
+        <div className="nav-light" aria-hidden="true" />
+        <div className="nav-brand">
+          <Link href="/" className="brand" aria-label="aiion, início">
+            <img src="/images/logo.svg" alt="aiion" />
+          </Link>
+          <span className="nav-place" aria-live="polite">
+            <i aria-hidden="true" />
+            <b key={place}>{place}</b>
+          </span>
+        </div>
+        <nav className="nav-links" aria-label="Principal" ref={linksRef}>
+          <span className="nav-glider" ref={gliderRef} aria-hidden="true" />
+          {nav.map((item) => {
+            const current = item.href.startsWith("/#") ? home && active === item.href : pathname === item.href;
+            return (
+              <Link key={item.href} href={item.href} className={current ? "active" : ""}>
+                {item.label}
+              </Link>
+            );
+          })}
         </nav>
         <div className="nav-actions">
-          <span className="lang">PT</span>
           <Link className="btn btn-ghost" href="/diagnostico">
             Diagnóstico grátis
           </Link>
@@ -224,7 +278,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
             Falar no WhatsApp
           </a>
           <button
-            className="menu-btn"
+            className={`menu-btn${open ? " open" : ""}`}
             type="button"
             aria-label={open ? "Fechar menu" : "Abrir menu"}
             aria-expanded={open}
@@ -237,8 +291,13 @@ export function Shell({ children }: { children: React.ReactNode }) {
 
       {open ? (
         <div className="mobile-panel">
-          {nav.map((item) => (
-            <Link key={item.href} href={item.href} onClick={() => setOpen(false)}>
+          <p className="mobile-kicker">
+            <i aria-hidden="true" />
+            {place}
+          </p>
+          {nav.map((item, index) => (
+            <Link key={item.href} href={item.href} className="mobile-link" onClick={() => setOpen(false)}>
+              <span>{String(index + 1).padStart(2, "0")}</span>
               {item.label}
             </Link>
           ))}
@@ -268,7 +327,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
       <footer className="footer">
         <div className="wrap footer-grid">
           <div>
-            <img src="/images/logo.png" alt="aiion" />
+            <img src="/images/logo.svg" alt="aiion" />
             <p>Criação encontra tecnologia</p>
           </div>
           <div>
