@@ -52,8 +52,9 @@ export function Founder() {
           <p className="role">Tecnologia & IA</p>
           <h3>Jhenni Nascimento</h3>
           <p className="lede">
-            Engenheira de software e IA. Criou a primeira plataforma de pagamento com Pix Automático
-            do Brasil.
+            Engenheira de software e IA, com pós em neurociência para entender ainda mais o cérebro
+            humano e replicar esse funcionamento na inteligência artificial. Criou a primeira
+            plataforma de pagamento com Pix Automático do Brasil.
           </p>
           <div className="contacts">
             <a href={WA_FOUNDER} target="_blank" rel="noreferrer">

@@ -2,12 +2,6 @@
 
 import { services, marqueeItems } from "@/lib/site";
 
-function spotlight(event: React.MouseEvent<HTMLElement>) {
-  const rect = event.currentTarget.getBoundingClientRect();
-  event.currentTarget.style.setProperty("--mx", `${event.clientX - rect.left}px`);
-  event.currentTarget.style.setProperty("--my", `${event.clientY - rect.top}px`);
-}
-
 export function Services() {
   const loop = [...marqueeItems, ...marqueeItems];
 
@@ -16,10 +10,7 @@ export function Services() {
       <div className="marquee" aria-hidden="true">
         <div className="marquee-track">
           {loop.map((item, index) => (
-            <span key={`${item}-${index}`}>
-              {item}
-              <i> ✦</i>
-            </span>
+            <span key={`${item}-${index}`}>{item}</span>
           ))}
         </div>
       </div>
@@ -38,23 +29,15 @@ export function Services() {
               juntas.
             </p>
           </div>
-          <div className="bento">
+          <ol className="index">
             {services.map((service) => (
-              <div
-                key={service.index}
-                className={service.featured ? "beam" : service.wide ? "span-2" : undefined}
-              >
-                {service.featured ? <div className="beam-spin" aria-hidden="true" /> : null}
-                <article className="card" onMouseMove={spotlight}>
-                  <div>
-                    <span className="card-index">{service.index}</span>
-                    <h3>{service.title}</h3>
-                  </div>
-                  <p>{service.text}</p>
-                </article>
-              </div>
+              <li key={service.index}>
+                <span>{service.index}</span>
+                <h3>{service.title}</h3>
+                <p>{service.text}</p>
+              </li>
             ))}
-          </div>
+          </ol>
         </div>
       </section>
     </>

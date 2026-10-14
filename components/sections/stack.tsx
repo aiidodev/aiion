@@ -41,9 +41,12 @@ export function Stack() {
           </div>
           <div className="diff">
             {differentials.map((item, index) => (
-              <div className="diff-row" key={item}>
+              <div className="diff-row" key={item.title}>
                 <em>{String(index + 1).padStart(2, "0")}</em>
-                <strong>{item}</strong>
+                <div>
+                  <strong>{item.title}</strong>
+                  <p>{item.text}</p>
+                </div>
                 <span>aiion</span>
               </div>
             ))}

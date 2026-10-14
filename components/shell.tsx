@@ -12,9 +12,8 @@ gsap.registerPlugin(ScrollTrigger);
 const rail = [
   { href: "/#servicos", label: "Serviços" },
   { href: "/#metodo", label: "D360" },
-  { href: "/#filosofia", label: "Filosofia" },
   { href: "/#fundadora", label: "Fundadora" },
-  { href: "/#stack", label: "Stack" },
+  { href: "/#comecar", label: "Começo" },
   { href: "/#contato", label: "Contato" },
 ];
 
@@ -24,6 +23,9 @@ const places: Record<string, string> = {
   "/#filosofia": "Filosofia",
   "/#fundadora": "Fundadora",
   "/#stack": "Stack",
+  "/#comecar": "Começo",
+  "/#perguntas": "Perguntas",
+  "/#notas": "Arquivo",
   "/#contato": "Contato",
   "/portfolio": "Portfólio",
   "/blog": "Blog",
@@ -233,7 +235,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
           <div className="pre-top">
             <div>
               <p className="pre-kicker">aiion // sistema</p>
-              <img src="/images/logo.svg" alt="aiion" style={{ height: 48, marginTop: 12 }} />
+              <img src="/images/logo-lockup.png" alt="AIION, tecnologia e marketing" style={{ height: 108, marginTop: 12 }} />
             </div>
             <span className="pre-count" ref={countRef}>
               000
@@ -251,8 +253,8 @@ export function Shell({ children }: { children: React.ReactNode }) {
       <header className={`nav${open ? " open" : ""}`} ref={navRef} onMouseMove={moveNav}>
         <div className="nav-light" aria-hidden="true" />
         <div className="nav-brand">
-          <Link href="/" className="brand" aria-label="aiion, início">
-            <img src="/images/logo.svg" alt="aiion" />
+          <Link href="/" className="brand" aria-label="AIION, início">
+            <img src="/images/logo.png" alt="AIION" />
           </Link>
           <span className="nav-place" aria-live="polite">
             <i aria-hidden="true" />
@@ -327,8 +329,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
       <footer className="footer">
         <div className="wrap footer-grid">
           <div>
-            <img src="/images/logo.svg" alt="aiion" />
-            <p>Criação encontra tecnologia</p>
+            <img src="/images/logo-lockup.png" alt="AIION, tecnologia e marketing" />
           </div>
           <div>
             <h3>Mapa</h3>

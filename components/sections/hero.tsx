@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import gsap from "gsap";
 import { NeuralField } from "@/components/neural-field";
-import { WA_DEFAULT, phases } from "@/lib/site";
+import { WA_DEFAULT } from "@/lib/site";
 
 function Split({ text }: { text: string }) {
   return (
@@ -22,15 +22,7 @@ function Split({ text }: { text: string }) {
   );
 }
 
-const signals = [
-  "Atendimento com IA, o tempo todo",
-  "Marca e engenharia no mesmo time",
-  "Todo contato entra. Nada se perde.",
-];
-
 export function Hero() {
-  const [signal, setSignal] = useState(0);
-
   useEffect(() => {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     let ctx: gsap.Context | undefined;
@@ -65,13 +57,6 @@ export function Hero() {
     };
   }, []);
 
-  useEffect(() => {
-    const timer = window.setInterval(() => {
-      setSignal((value) => (value + 1) % signals.length);
-    }, 2800);
-    return () => window.clearInterval(timer);
-  }, []);
-
   const moveSpot = (event: React.MouseEvent<HTMLElement>) => {
     const rect = event.currentTarget.getBoundingClientRect();
     event.currentTarget.style.setProperty("--x", `${event.clientX - rect.left}px`);
@@ -84,65 +69,26 @@ export function Hero() {
       <div className="hero-spot" />
       <NeuralField />
       <div className="hero-layout">
-        <div>
-          <p className="eyebrow rise">Engenharia de IA & Sistemas Inteligentes</p>
-          <h1 aria-label="Engenharia de Inteligência">
-            <span aria-hidden="true">
-              <Split text="Engenharia" />
-              <br />
-              <Split text="de Inteligência" />
-            </span>
-          </h1>
-          <p className="lede rise">
-            Sistemas avançados de IA, automação e engenharia de software para empresas prontas para
-            escalar globalmente.
-          </p>
-          <div className="hero-cta rise">
-            <a className="btn btn-red btn-lg" href="#contato">
-              Quero meu projeto
-            </a>
-            <a className="btn btn-ghost btn-lg" href={WA_DEFAULT} target="_blank" rel="noreferrer">
-              Falar no WhatsApp
-            </a>
-          </div>
-          <div className="hero-meta rise">
-            <div>
-              <strong>24/7</strong>
-              Atendimento com IA
-            </div>
-            <div>
-              <strong>D360</strong>
-              Digitalização em 360°
-            </div>
-            <div>
-              <strong>aiion</strong>
-              Criação + tecnologia
-            </div>
-          </div>
+        <p className="eyebrow rise">Sistemas inteligentes</p>
+        <h1 aria-label="Engenharia de Inteligência">
+          <span aria-hidden="true">
+            <Split text="Engenharia" />
+            <br />
+            <Split text="de Inteligência" />
+          </span>
+        </h1>
+        <p className="lede rise">
+          Sistemas avançados de IA, automação e engenharia de software para empresas prontas para
+          escalar globalmente.
+        </p>
+        <div className="hero-cta rise">
+          <a className="btn btn-red btn-lg" href="#contato">
+            Quero meu projeto
+          </a>
+          <a className="btn btn-ghost btn-lg" href={WA_DEFAULT} target="_blank" rel="noreferrer">
+            Falar no WhatsApp
+          </a>
         </div>
-
-        <aside className="panel rise" aria-label="Painel do método D360">
-          <div className="scan" aria-hidden="true" />
-          <div className="panel-head">
-            <span>Método D360</span>
-            <span className="live">
-              <b /> ao vivo
-            </span>
-          </div>
-          <div className="nodes">
-            {phases.map((phase) => (
-              <div className="node" key={phase.id}>
-                <em>{phase.id}</em>
-                <span>{phase.title}</span>
-                <small>{phase.kicker}</small>
-              </div>
-            ))}
-          </div>
-          <div className="panel-foot">
-            <span>{signals[signal]}</span>
-            <strong>núcleo</strong>
-          </div>
-        </aside>
       </div>
     </section>
   );

@@ -64,7 +64,7 @@ export function NeuralField() {
           const b = nodes[j];
           const dist = Math.hypot(a.x - b.x, a.y - b.y);
           if (dist < 140) {
-            context.strokeStyle = `rgba(27, 220, 111, ${(1 - dist / 140) * 0.45})`;
+            context.strokeStyle = `rgba(244, 241, 234, ${(1 - dist / 140) * 0.45})`;
             context.lineWidth = 1;
             context.beginPath();
             context.moveTo(a.x, a.y);

@@ -162,11 +162,76 @@ export const stack = [
 ];
 
 export const differentials = [
-  "Mentalidade de desenvolvimento AI-first",
-  "Arquitetura orientada à automação",
-  "Escalabilidade global",
-  "Engenharia de nível empresarial",
-  "Ciclos rápidos de inovação",
+  {
+    title: "Mentalidade de desenvolvimento AI-first",
+    text: "A inteligência artificial entra na arquitetura do sistema, não como um acessório colocado no final. Atendimento, qualificação e processos já nascem com esse critério.",
+  },
+  {
+    title: "Arquitetura orientada à automação",
+    text: "O que se repete deixa de depender de alguém lembrar. Lead, atendimento e rotina operacional passam a seguir um fluxo.",
+  },
+  {
+    title: "Escalabilidade global",
+    text: "A base é a mesma do primeiro cliente ao volume maior: marca, sistema e operação no mesmo desenho, sem refazer tudo quando a empresa cresce.",
+  },
+  {
+    title: "Engenharia de nível empresarial",
+    text: "Código, dados e acesso tratados com o cuidado de um sistema que a empresa vai usar todo dia, não de uma página que se troca na semana seguinte.",
+  },
+  {
+    title: "Ciclos rápidos de inovação",
+    text: "O escopo é ajustado ao momento. Entrega visível, conversa com quem executa e correção no caminho, sem um projeto que só aparece meses depois.",
+  },
+];
+
+export const startSteps = [
+  {
+    index: "01",
+    title: "Diagnóstico",
+    text: "Um formulário curto mapeia marca, site, CRM, IA, redes, tráfego, WhatsApp, app e automação. O recorte sai nas camadas do D360.",
+  },
+  {
+    index: "02",
+    title: "Conversa com quem executa",
+    text: "O retorno vai para o WhatsApp. Não há uma fila entre você e a pessoa que vai desenhar e construir.",
+  },
+  {
+    index: "03",
+    title: "Escopo do momento",
+    text: "Nem toda empresa precisa das quatro camadas de uma vez. O método é ajustado ao que trava a operação agora.",
+  },
+  {
+    index: "04",
+    title: "Entrega e domínio",
+    text: "Marca, sistema, conteúdo e automações entram em uso. A equipe é treinada para operar o que foi construído.",
+  },
+];
+
+export const questions = [
+  {
+    q: "A IA de atendimento é um adicional?",
+    a: "Não. Ela é inclusa em todo sistema desenvolvido pela aiion, com o tom e a estratégia do negócio, para atender e qualificar o tempo todo.",
+  },
+  {
+    q: "Preciso contratar o método D360 inteiro?",
+    a: "Não. O diagnóstico mostra as camadas e o escopo é ajustado ao momento: marca, site, CRM, redes, tráfego, WhatsApp, app ou automação.",
+  },
+  {
+    q: "Vocês publicam aplicativo nas lojas?",
+    a: "Sim. Sistemas sob medida e aplicativos Android e iOS, com publicação nas lojas, fazem parte da etapa de domínio do método.",
+  },
+  {
+    q: "O WhatsApp usa a API oficial?",
+    a: "Sim. Disparos e automações de WhatsApp são feitos com a API oficial, junto de tráfego, criativos e conteúdo.",
+  },
+  {
+    q: "Quem conduz o projeto?",
+    a: "Quem executa. A conversa do site vai direto para o WhatsApp da aiion, sem intermediário comercial.",
+  },
+  {
+    q: "Como a neurociência entra na IA?",
+    a: "Jhenni Nascimento é engenheira de software e IA e tem pós em neurociência. A formação serve para entender melhor o cérebro humano e replicar esse funcionamento na inteligência artificial dos sistemas.",
+  },
 ];
 
 export const marqueeItems = [
