@@ -440,13 +440,13 @@ export default function MetroHero({
             <span
               style={{
                 fontFamily: DISPLAY,
-                fontWeight: 800,
-                fontSize: "clamp(22px, 3.2vw, 40px)",
-                lineHeight: 1.2,
-                letterSpacing: "-0.02em",
+                fontWeight: 600,
+                fontSize: "clamp(16px, 1.7vw, 22px)",
+                lineHeight: 1.35,
+                letterSpacing: "0.01em",
                 color: "#fff",
                 textShadow: "0 2px 18px rgba(0,0,0,0.95), 0 1px 2px rgba(0,0,0,1)",
-                maxWidth: "18ch",
+                maxWidth: "28em",
               }}
             >
               {tagline}

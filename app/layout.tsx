@@ -18,11 +18,11 @@ const outfit = Outfit({
 
 export const metadata: Metadata = {
   title: {
-    default: "aiion — Atenção em cliente.",
+    default: "aiion — Engenharia de inteligência. D360",
     template: "%s · aiion",
   },
   description:
-    "A aiion entrega marca, site, CRM, redes, WhatsApp e IA de atendimento. A conversa começa. A operação não esquece. Método D360.",
+    "A aiion entrega software, IA de atendimento, CRM, site e WhatsApp no mesmo sistema. Método D360.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

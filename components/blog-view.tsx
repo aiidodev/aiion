@@ -1,27 +1,24 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { blogCategories, posts } from "@/lib/site";
+import Link from "next/link";
+import { ArticleFigure } from "@/components/article-figure";
+import { articles, blogCategories, readingMinutes } from "@/lib/blog";
 
 export function BlogView() {
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState("Todos");
-  const [open, setOpen] = useState<string | null>(posts[0]?.title ?? null);
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
-    return posts.filter((post) => {
+    return articles.filter((post) => {
       const inCategory = category === "Todos" || post.category === category;
-      const inQuery =
-        !q ||
-        post.title.toLowerCase().includes(q) ||
-        (post.excerpt || "").toLowerCase().includes(q);
-      return inCategory && inQuery;
+      const haystack = [post.title, post.excerpt, ...post.sections.flatMap((section) => [section.heading, ...section.paragraphs])]
+        .join(" ")
+        .toLowerCase();
+      return inCategory && (!q || haystack.includes(q));
     });
   }, [query, category]);
-
-  const featured = filtered.filter((post) => post.excerpt);
-  const archive = filtered;
 
   return (
     <div className="wrap" style={{ paddingBottom: "4rem" }}>
@@ -31,7 +28,7 @@ export function BlogView() {
         </p>
         <h1>Notas da aiion.</h1>
         <p className="lede" style={{ marginTop: "1rem" }}>
-          Atenção, IA e o trabalho que o sistema pode assumir.
+          Atenção, IA e o trabalho que o sistema pode assumir. Cada nota abre inteira.
         </p>
       </header>
       <div className="filters">
@@ -55,49 +52,28 @@ export function BlogView() {
       </div>
       <div className="blog-layout">
         <div className="post-grid">
-          {featured.map((post) => {
-            const expanded = open === post.title;
-            return (
-              <article className="post" key={post.title}>
-                <div>
-                  <small>
-                    {post.category} · {post.date}
-                    {post.read ? ` · ${post.read} de leitura` : ""}
-                  </small>
-                  <h3>{post.title}</h3>
-                  {expanded ? <p>{post.excerpt}</p> : <p>{post.excerpt}</p>}
-                </div>
-                <button
-                  type="button"
-                  className="btn btn-ghost"
-                  style={{ marginTop: "1rem", alignSelf: "flex-start" }}
-                  onClick={() => setOpen(expanded ? null : post.title)}
-                  aria-expanded={expanded}
-                >
-                  {expanded ? "Fechar" : "Ler resumo"}
-                </button>
-              </article>
-            );
-          })}
-          {featured.length === 0 ? <p className="empty">Nenhum artigo com esse filtro.</p> : null}
+          {filtered.map((post) => (
+            <Link className="post" key={post.slug} href={`/blog/${post.slug}`}>
+              <ArticleFigure seed={post.seed} label={post.category} />
+              <div>
+                <small>
+                  {post.category} · {post.date} · {readingMinutes(post)} min
+                </small>
+                <h3>{post.title}</h3>
+                <p>{post.excerpt}</p>
+              </div>
+            </Link>
+          ))}
+          {filtered.length === 0 ? <p className="empty">Nenhum artigo com esse filtro.</p> : null}
         </div>
         <aside>
           <h2 style={{ fontSize: "1.4rem", marginBottom: "1rem" }}>Linha do tempo</h2>
           <div className="timeline">
-            {archive.map((post) => (
-              <a
-                key={`${post.date}-${post.title}`}
-                href={`#${slug(post.title)}`}
-                onClick={(event) => {
-                  if (post.excerpt) {
-                    event.preventDefault();
-                    setOpen(post.title);
-                  }
-                }}
-              >
+            {filtered.map((post) => (
+              <Link key={post.slug} href={`/blog/${post.slug}`}>
                 <small>{post.date}</small>
                 <strong>{post.title}</strong>
-              </a>
+              </Link>
             ))}
           </div>
         </aside>
@@ -106,22 +82,13 @@ export function BlogView() {
         <div>
           <h2>Levar isso para a empresa.</h2>
           <p className="lede" style={{ marginTop: "0.6rem" }}>
-            O diagnóstico D360 mostra a camada que falta: marca, site, CRM, IA, redes, tráfego,
-            WhatsApp ou app. Sem custo. Dá para imprimir ou salvar em PDF.
+            Marca, site, CRM, IA, redes, tráfego e app. A conversa começa no contato.
           </p>
         </div>
-        <a className="btn btn-red" href="/diagnostico">
-          Quero o diagnóstico
+        <a className="btn btn-red" href="/#contato">
+          Contato
         </a>
       </div>
     </div>
   );
-}
-
-function slug(value: string) {
-  return value
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .replace(/[^a-z0-9]+/g, "-");
 }

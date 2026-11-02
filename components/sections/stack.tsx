@@ -61,7 +61,7 @@ export function Stack() {
         integrations={integrations}
         action={{ href: "/tecnologia", label: "Saiba mais" }}
       />
-      <section className="section" id="diferenciais" style={{ paddingTop: "1.5rem" }}>
+      <section className="section" id="diferenciais" style={{ paddingTop: "clamp(2.5rem, 5vw, 3.75rem)", paddingBottom: "clamp(2.5rem, 5vw, 4rem)" }}>
         <div className="wrap">
           <div className="reveal">
             <p className="kicker">

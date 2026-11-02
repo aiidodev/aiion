@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { FaqDrawer } from "@/components/ui/faq-drawer";
 import { HowItWorks } from "@/components/ui/how-it-works";
-import { posts } from "@/lib/site";
+import { articles } from "@/lib/blog";
 
 export function Start() {
   return (
@@ -20,7 +20,7 @@ export function Start() {
         </div>
         <HowItWorks />
         <p className="more-link">
-          <Link href="/diagnostico">Quero o diagnóstico</Link>
+          <a href="/#contato">Contato</a>
         </p>
       </div>
     </section>
@@ -36,7 +36,7 @@ export function Questions() {
 }
 
 export function Notes() {
-  const notes = posts.filter((post) => post.excerpt).slice(0, 4);
+  const notes = articles.slice(0, 4);
 
   return (
     <section className="section" id="notas">
@@ -52,13 +52,13 @@ export function Notes() {
         </div>
         <div className="notes">
           {notes.map((post) => (
-            <article className="note-card" key={post.title}>
+            <Link className="note-card" key={post.slug} href={`/blog/${post.slug}`}>
               <small>
                 {post.category} · {post.date}
               </small>
               <h3>{post.title}</h3>
               <p>{post.excerpt}</p>
-            </article>
+            </Link>
           ))}
         </div>
         <p className="more-link">

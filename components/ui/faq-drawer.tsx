@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useRef, type CSSProperties } from "react"
-import { questions, WA_DEFAULT } from "@/lib/site"
+import { questions } from "@/lib/site"
 
 export type FaqDrawerOptions = {
   label?: string
@@ -42,8 +42,8 @@ const DEFAULTS: Required<FaqDrawerOptions> = {
   open: "none",
   single: true,
   askNote: "Ainda ficou uma dúvida? Quem constrói responde.",
-  askLabel: "Falar no WhatsApp",
-  askHref: WA_DEFAULT,
+  askLabel: "Contato",
+  askHref: "/#contato",
   finish: "graphite",
 }
 

@@ -44,7 +44,7 @@ export const IntegrationShowcase = React.forwardRef<HTMLElement, IntegrationShow
           ref={ref}
           id={id}
           className={cn("flex w-full flex-col justify-start bg-background text-foreground", className)}
-          style={{ minHeight: "100svh", paddingTop: "calc(var(--nav-h) + 0.65rem)", paddingBottom: "1rem" }}
+          style={{ paddingTop: "clamp(2rem, 4vw, 3.25rem)", paddingBottom: "clamp(2.75rem, 6vw, 4.5rem)" }}
         >
           <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
             <h2 style={{ fontSize: "clamp(1.7rem, 3.4vw, 3.1rem)", lineHeight: 1.05, maxWidth: "14ch" }}>

@@ -1,8 +1,6 @@
 "use client"
 
 import { useMemo, useState } from "react"
-import Link from "next/link"
-import { WA_DEFAULT } from "@/lib/site"
 import { toolAreas, tools, type ToolArea } from "@/lib/tools"
 
 export function ToolsView() {
@@ -89,11 +87,8 @@ export function ToolsView() {
       <div className="cta-band">
         <h2>Levar essa base para a empresa.</h2>
         <div style={{ display: "flex", gap: "1.2rem", flexWrap: "wrap" }}>
-          <Link href="/diagnostico" className="btn btn-red">
-            Quero o diagnóstico
-          </Link>
-          <a href={WA_DEFAULT} className="btn btn-ghost" target="_blank" rel="noreferrer">
-            Falar no WhatsApp
+          <a href="/#contato" className="btn btn-red">
+            Contato
           </a>
         </div>
       </div>

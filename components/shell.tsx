@@ -5,10 +5,12 @@ import { usePathname } from "next/navigation";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { nav, links, CNPJ, WA_DEFAULT } from "@/lib/site";
+import { nav, links, CNPJ } from "@/lib/site";
 import HalftoneWordmarkFooter from "@/components/ui/halftone-wordmark-footer";
 
 gsap.registerPlugin(ScrollTrigger);
+
+const headerNav = nav.filter((item) => item.href !== "/fundadora");
 
 const rail = [
   { href: "/#servicos", label: "Serviços" },
@@ -28,7 +30,6 @@ const places: Record<string, string> = {
   "/#contato": "Contato",
   "/portfolio": "Portfólio",
   "/blog": "Blog",
-  "/diagnostico": "Diagnóstico",
   "/tecnologia": "Tecnologia",
 };
 
@@ -263,7 +264,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
         </div>
         <nav className="nav-links" aria-label="Principal" ref={linksRef}>
           <span className="nav-glider" ref={gliderRef} aria-hidden="true" />
-          {nav.map((item) => {
+          {headerNav.map((item) => {
             const current = item.href.startsWith("/#") ? home && active === item.href : pathname === item.href;
             return (
               <Link key={item.href} href={item.href} className={current ? "active" : ""}>
@@ -273,11 +274,8 @@ export function Shell({ children }: { children: React.ReactNode }) {
           })}
         </nav>
         <div className="nav-actions">
-          <Link className="btn btn-ghost" href="/diagnostico">
-            Diagnóstico
-          </Link>
-          <a className="btn btn-red" href={WA_DEFAULT} target="_blank" rel="noreferrer">
-            WhatsApp
+          <a className="btn btn-red" href="/#contato">
+            Contato
           </a>
           <button
             className={`menu-btn${open ? " open" : ""}`}
@@ -297,18 +295,15 @@ export function Shell({ children }: { children: React.ReactNode }) {
             <i aria-hidden="true" />
             {place}
           </p>
-          {nav.map((item, index) => (
+          {headerNav.map((item, index) => (
             <Link key={item.href} href={item.href} className="mobile-link" onClick={() => setOpen(false)}>
               <span>{String(index + 1).padStart(2, "0")}</span>
               {item.label}
             </Link>
           ))}
           <div className="mobile-actions">
-            <Link className="btn btn-ghost" href="/diagnostico">
-              Diagnóstico
-            </Link>
-            <a className="btn btn-red" href={WA_DEFAULT} target="_blank" rel="noreferrer">
-              WhatsApp
+            <a className="btn btn-red" href="/#contato" onClick={() => setOpen(false)}>
+              Contato
             </a>
           </div>
         </div>
@@ -328,7 +323,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
 
       <HalftoneWordmarkFooter
         wordmark="aiion"
-        label="Atenção em cliente."
+        label="Engenharia de inteligência. D360"
         meta={`© 2026 aiion · CNPJ ${CNPJ}`}
         fontFamily='var(--font-display), "Syne", sans-serif'
         monoFamily="var(--font-sans), sans-serif"

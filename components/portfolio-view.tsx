@@ -58,8 +58,8 @@ export function PortfolioView() {
             O diagnóstico mostra a camada que falta. A conversa segue no WhatsApp.
           </p>
         </div>
-        <a className="btn btn-red" href="/diagnostico">
-          Quero o diagnóstico
+        <a className="btn btn-red" href="/#contato">
+          Contato
         </a>
       </div>
     </div>

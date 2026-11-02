@@ -8,7 +8,7 @@ export function waLink(text: string) {
 }
 
 export const WA_DEFAULT = waLink(
-  "Olá! Vim pelo site da aiion. Quero o diagnóstico do D360: marca, sistema e IA.",
+  "Olá! Vim pelo site da aiion. Quero falar sobre o D360: marca, sistema e IA.",
 );
 
 export const WA_FOUNDER = waLink(
@@ -40,34 +40,65 @@ export const services = [
   {
     index: "01",
     title: "Marca",
-    text: "Nome, manual, logo e papelaria. A pessoa reconhece a empresa antes de ler a oferta.",
+    text: "A marca é o que a pessoa reconhece antes de ler a oferta. Nome, logo, cores, tipografia, papelaria e manual saem juntos, para o anúncio, o site, o WhatsApp e a IA falarem com a mesma cara.",
+    points: [
+      { label: "Nome", text: "O nome e o jeito de falar. A empresa cabe em uma frase e a pessoa reconhece de novo na próxima peça." },
+      { label: "Manual", text: "Onde a marca pode ir, o que não muda e como a equipe aplica em uma peça nova sem inventar outra versão." },
+      { label: "Logo", text: "Símbolo, versão horizontal e o uso em fundo escuro, claro e pequeno. A marca aguenta o anúncio e o ícone do app." },
+      { label: "Papelaria", text: "Cartão, assinatura e as peças que a pessoa vê fora da tela, no mesmo desenho do site." },
+    ],
     wide: true,
   },
   {
     index: "02",
     title: "Site e loja",
-    text: "Institucional, página de venda ou loja. A visita entende o que você faz e segue para a conversa.",
+    text: "O site é o endereço onde a visita entende o que você faz, para quem é e qual é o próximo passo. Institucional, página de venda ou loja. A conversa, o orçamento ou a compra seguem para o CRM.",
+    points: [
+      { label: "Site", text: "Quem é a empresa, o que entrega e por que continuar. Cada página tem um caminho, não um texto solto." },
+      { label: "Página de venda", text: "Uma oferta, o argumento e um único próximo passo. A visita sai para o WhatsApp ou para o pedido." },
+      { label: "Loja", text: "Catálogo, produto e compra. O pedido fica registrado, com o que a pessoa escolheu." },
+    ],
   },
   {
     index: "03",
     title: "CRM",
-    text: "Lead, cliente e venda na mesma plataforma. O que entrou não some entre o clique e o pedido.",
+    text: "O CRM guarda lead, cliente e venda no mesmo lugar. O que entrou pelo anúncio, pelo site ou pelo WhatsApp fica com origem, dono e próximo passo. A equipe retoma a conversa em vez de procurar o pedido no celular de alguém.",
+    points: [
+      { label: "Lead", text: "Quem chegou, de onde veio e o que pediu. Nada fica só na mensagem de um atendente." },
+      { label: "Cliente", text: "Contato, histórico e o que já foi combinado. A próxima pessoa da equipe continua de onde a conversa parou." },
+      { label: "Venda", text: "O pedido e o estágio, do primeiro contato ao fechamento. O que entrou não some no meio do caminho." },
+    ],
   },
   {
     index: "04",
     title: "IA de atendimento",
-    text: "Responde, tira dúvida e qualifica no tom do negócio, de dia e de noite. Entra em todo sistema da aiion.",
+    text: "A IA responde, tira dúvida e qualifica no tom do negócio, de dia e de noite. Entra em todo sistema da aiion. Ela sabe o que pode dizer sozinha e o que precisa passar para uma pessoa, com o histórico no CRM.",
+    points: [
+      { label: "Atendimento", text: "Resposta no tom da marca, fora do horário comercial. A pessoa não espera o dia seguinte para uma dúvida simples." },
+      { label: "Qualificação", text: "Pergunta o que a equipe precisa saber antes de assumir: o que a pessoa quer, para quando e por qual canal." },
+      { label: "Passagem", text: "Quando a pessoa pede um humano, a conversa vai junto. A equipe não recomeça do zero." },
+    ],
     featured: true,
   },
   {
     index: "05",
     title: "Redes e WhatsApp",
-    text: "O anúncio chama. O WhatsApp oficial conversa. Tráfego com a verba no controle e o retorno medido, criativo e texto de venda.",
+    text: "O anúncio chama a pessoa certa. O WhatsApp oficial, pela API, conversa, manda criativo e texto de venda e registra o que foi dito. O tráfego fica com a verba no controle e o retorno medido. O clique segue para o CRM.",
+    points: [
+      { label: "Redes", text: "Presença e conteúdo no lugar onde a pessoa já decide. A peça usa a mesma marca do site." },
+      { label: "Tráfego", text: "A verba fica no controle e o retorno é medido em conversa e pedido, não só em clique." },
+      { label: "WhatsApp", text: "Disparo e automação pela API oficial, com criativo e texto de venda. O que foi dito fica registrado." },
+    ],
   },
   {
     index: "06",
     title: "Sistema e app",
-    text: "Sistema próprio e app nas lojas Android e iOS. A rotina segue quando a equipe sai.",
+    text: "O sistema próprio segura a rotina que planilha e grupo não seguram: pedido, agenda, equipe e o que a operação precisa ver no dia. O app nas lojas Android e iOS leva essa rotina para fora da mesa. Quando alguém sai, o processo continua no sistema.",
+    points: [
+      { label: "Sistema", text: "A rotina da empresa, com o acesso da equipe e o dado no lugar certo. O processo não mora na cabeça de uma pessoa." },
+      { label: "App", text: "A mesma operação no celular, para quem atende, visita ou fecha fora da mesa." },
+      { label: "Lojas", text: "Publicação na Android e na iOS. A equipe baixa o app e entra com o próprio acesso." },
+    ],
   },
 ];
 
@@ -430,164 +461,3 @@ export const projectFilters = [
   "Livros",
   "Lançamentos",
 ] as const;
-
-export type BlogPost = {
-  title: string;
-  date: string;
-  category?: string;
-  excerpt?: string;
-  read?: string;
-};
-
-export const blogCategories = [
-  "Todos",
-  "Curiosidades",
-  "Dev & Tech",
-  "Negócios",
-  "Segurança",
-  "Automação",
-  "Inteligência Artificial",
-];
-
-export const posts: BlogPost[] = [
-  {
-    category: "Curiosidades",
-    date: "08 ago 2026",
-    read: "2 min",
-    title: "7 coisas que quase ninguém sabe sobre inteligência artificial",
-    excerpt:
-      "Fatos pouco comentados sobre como esses sistemas realmente funcionam — e por que isso muda o seu uso.",
-  },
-  {
-    category: "Curiosidades",
-    date: "08 ago 2026",
-    read: "2 min",
-    title: "Segredos da internet que poucas pessoas conhecem",
-    excerpt:
-      "Cabos submarinos, um relógio que já parou de contar e o motivo de fevereiro quebrar tanto sistema.",
-  },
-  {
-    category: "Curiosidades",
-    date: "08 ago 2026",
-    read: "2 min",
-    title: "O que a sua empresa não sabe que já está perdendo com processos manuais",
-    excerpt:
-      "Os custos invisíveis não aparecem no DRE: retrabalho, troca de contexto e conhecimento preso em uma pessoa.",
-  },
-  {
-    category: "Dev & Tech",
-    date: "07 ago 2026",
-    read: "2 min",
-    title: 'Versionamento de prompt: o "git" que faltava',
-    excerpt:
-      "Prompt em produção é código. Sem versão, você não sabe o que mudou quando a qualidade cai.",
-  },
-  {
-    category: "Negócios",
-    date: "07 ago 2026",
-    read: "2 min",
-    title: "O erro de comprar ferramenta antes de definir o problema",
-    excerpt:
-      "Empresas acumulam licenças de software que resolvem dores que ninguém conseguiu descrever em uma frase.",
-  },
-  {
-    category: "Segurança",
-    date: "06 ago 2026",
-    read: "2 min",
-    title: "O que é guardrail e por que todo agente precisa de um",
-    excerpt:
-      "Limites explícitos entre o que o modelo sugere e o que o sistema executa são o que torna IA operável.",
-  },
-  {
-    category: "Segurança",
-    date: "06 ago 2026",
-    read: "2 min",
-    title: "Privacidade por design é mais barata que consertar depois",
-    excerpt:
-      "Coletar menos, guardar menos tempo e separar o que identifica reduz risco e custo simultaneamente.",
-  },
-  {
-    category: "Automação",
-    date: "05 ago 2026",
-    read: "2 min",
-    title: "Sistemas legados conversam melhor com IA do que parece",
-    excerpt:
-      "Não é preciso substituir o ERP para automatizar. Camadas de leitura e integração resolvem boa parte.",
-  },
-  {
-    category: "Dev & Tech",
-    date: "05 ago 2026",
-    read: "2 min",
-    title: "Testes automatizados: o seguro mais barato do software",
-    excerpt: "O custo de corrigir um defeito cresce a cada etapa em que ele passa despercebido.",
-  },
-  {
-    category: "Automação",
-    date: "04 ago 2026",
-    read: "2 min",
-    title: "IA em vendas: onde ela ajuda de verdade",
-    excerpt:
-      "Não é escrever e-mail em massa. É priorização, contexto antes da conversa e registro depois dela.",
-  },
-  {
-    category: "Negócios",
-    date: "03 ago 2026",
-    read: "2 min",
-    title: "A regra dos 70% em projetos de IA",
-    excerpt:
-      "Chegar a um protótipo bom é rápido. Os últimos 30% de confiabilidade consomem a maior parte do prazo.",
-  },
-  {
-    category: "Dev & Tech",
-    date: "02 ago 2026",
-    read: "2 min",
-    title: "Streaming de resposta: por que parece muito mais rápido",
-    excerpt:
-      "O tempo até o primeiro token importa mais para a percepção do que o tempo total de geração.",
-  },
-  {
-    category: "Inteligência Artificial",
-    date: "01 ago 2026",
-    read: "2 min",
-    title: "MCP e a padronização da conexão entre IA e ferramentas",
-    excerpt:
-      "Um protocolo comum para dar acesso a dados e ações reduz integrações sob medida a configuração.",
-  },
-  { date: "30 jul 2026", title: "Como medir ROI de automação sem enganar a si mesmo" },
-  { date: "27 jul 2026", title: "UX de espera: como a latência vira percepção de qualidade" },
-  { date: "23 jul 2026", title: "Senhas, passkeys e o fim do que você decorava" },
-  { date: "20 jul 2026", title: "O custo energético da inteligência artificial" },
-  { date: "16 jul 2026", title: "Reconhecimento de documentos: do OCR ao entendimento" },
-  { date: "13 jul 2026", title: "Benchmarks de IA: por que eles enganam" },
-  { date: "06 jul 2026", title: "Fila de mensagens: o que separa sistema frágil de sistema resiliente" },
-  { date: "02 jul 2026", title: "O que é ajuste por instrução e por que ele criou o chat moderno" },
-  { date: "29 jun 2026", title: "A diferença entre modelo aberto e modelo livre" },
-  { date: "25 jun 2026", title: "Por que planilhas ainda dominam — e o que fazer com isso" },
-  { date: "22 jun 2026", title: "Por que o seu chatbot frustra o cliente" },
-  { date: "18 jun 2026", title: "Nuvem ou servidor próprio para IA: como decidir" },
-  { date: "16 jun 2026", title: "Webhooks: a espinha dorsal invisível das integrações" },
-  { date: "09 jun 2026", title: "Dívida técnica: a conta que sempre chega" },
-  { date: "02 jun 2026", title: "Edge computing: por que processar perto de quem usa" },
-  { date: "26 mai 2026", title: "Dados sintéticos: quando inventar dado é boa prática" },
-  { date: "19 mai 2026", title: "Chain-of-thought: por que pensar em voz alta melhora a resposta" },
-  { date: "12 mai 2026", title: "Idempotência: o detalhe de API que evita cobrar duas vezes" },
-  { date: "05 mai 2026", title: "O mito do funcionário substituído pela IA" },
-  { date: "28 abr 2026", title: "Quantização: como rodar modelo grande em máquina pequena" },
-  { date: "21 abr 2026", title: "Deepfakes: o problema não é a tecnologia, é a verificação" },
-  { date: "14 abr 2026", title: "Por que toda empresa deveria ter um glossário de dados" },
-  { date: "07 abr 2026", title: "Multimodal: quando a IA passa a ver e ouvir" },
-  { date: "31 mar 2026", title: 'Observabilidade de IA: o que medir quando nada "quebra"' },
-  { date: "24 mar 2026", title: "A diferença entre automação e inteligência" },
-  { date: "17 mar 2026", title: "Destilação: como modelos pequenos ficaram tão bons" },
-  { date: "10 mar 2026", title: "Prompt injection: a vulnerabilidade que nasce com a IA" },
-  { date: "03 mar 2026", title: "Quanto custa de verdade colocar IA em produção" },
-  { date: "24 fev 2026", title: "Embeddings: a tecnologia invisível por trás da busca moderna" },
-  { date: "17 fev 2026", title: "O que a LGPD exige de quem usa IA generativa" },
-  { date: "10 fev 2026", title: "Automatizar antes de organizar é multiplicar o caos" },
-  { date: "03 fev 2026", title: "Temperatura, top-p e o mito da criatividade da IA" },
-  { date: "27 jan 2026", title: "Por que GPU, e não CPU, move a IA" },
-  { date: "20 jan 2026", title: "Agentes de IA: o que muda quando o modelo executa ações" },
-  { date: "14 jan 2026", title: "O que é janela de contexto e por que ela limita seu produto" },
-  { date: "08 jan 2026", title: "RAG explicado: quando vale mais do que fine-tuning" },
-  { date: "02 jan 2026", title: "Como um LLM realmente funciona por trás do chat" },
-];

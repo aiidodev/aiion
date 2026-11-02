@@ -69,8 +69,8 @@ export function Method() {
         );
       }}
       action={
-        <a className="btn btn-red" href="/diagnostico">
-          Quero o diagnóstico
+        <a className="btn btn-red" href="/#contato">
+          Contato
         </a>
       }
     />

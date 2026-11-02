@@ -36,6 +36,7 @@ const prints: PictureRailItem[] = services.map((service, index) => ({
   drop: drops[index],
   tag: service.index,
   description: service.text,
+  points: service.points,
   details: details[index],
 }));
 
@@ -60,8 +61,8 @@ export function Services() {
         autoplay
         labels={{ front: "Frente", back: "Verso", close: "Fechar", open: "Ver este serviço" }}
         action={
-          <a className="btn btn-red" href="/diagnostico">
-            Quero o diagnóstico
+          <a className="btn btn-red" href="/#contato">
+            Contato
           </a>
         }
       />

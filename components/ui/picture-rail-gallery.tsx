@@ -25,6 +25,8 @@ export interface PictureRailItem {
   tag?: string;
   /** Shown beside the frame once it is lifted. */
   description?: string;
+  /** Each part of the work, explained beside the frame. */
+  points?: { label: string; text: string }[];
   /** Lines printed on the gallery label on the back: edition, size, medium… */
   details?: string[];
 }
@@ -845,7 +847,10 @@ export function PictureRailGallery({
       <div className="relative z-10 flex flex-col items-center gap-5 px-6 pb-16 pt-8 text-center md:pb-24">
         <div id={`${uid}-caption`} aria-live="polite" className="min-h-[2.75rem]">
           <p className="mx-auto max-w-2xl text-balance text-sm font-medium leading-relaxed">{currentItem ? currentItem.title : caption}</p>
-          {currentItem && <p className="mt-0.5 text-[13px] text-muted-foreground">{byline}{byline ? " · " : ""}<span className="text-foreground/80">{labels.open}</span></p>}
+          {currentItem?.description && (
+            <p className="mx-auto mt-2 max-w-2xl text-balance text-sm leading-relaxed" style={{ color: "#f4f1ea" }}>{currentItem.description}</p>
+          )}
+          {currentItem && <p className="mt-2 text-[13px]" style={{ color: "#f4f1ea" }}>{byline}{byline ? " · " : ""}{labels.open}</p>}
         </div>
         {action}
       </div>
@@ -1169,7 +1174,7 @@ function Detail({ uid, item, shape, index, total, labels, reduced, source, onLif
         {labels.close}
         <svg aria-hidden="true" viewBox="0 0 16 16" className="size-3.5" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"><path d="M3 3l10 10M13 3L3 13" /></svg>
       </button>
-      <div className="relative grid w-full max-w-5xl items-center justify-items-center gap-8 pt-12 md:grid-cols-[minmax(0,1fr)_minmax(0,20rem)] md:gap-12">
+      <div className="relative grid w-full max-w-5xl items-center justify-items-center gap-8 pt-12 md:grid-cols-[minmax(0,1fr)_minmax(0,26rem)] md:gap-12">
         <div ref={figureRef} data-figure className="relative" style={{ width: w, height: h }}>
           <div aria-hidden="true" className="absolute inset-x-[10%] -bottom-[7%] h-[16%] rounded-[50%] bg-black opacity-60 blur-xl" />
           <div
@@ -1195,11 +1200,21 @@ function Detail({ uid, item, shape, index, total, labels, reduced, source, onLif
           <p className="font-mono text-[11px] tracking-[0.2em] text-muted-foreground">{String(index + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}</p>
           <h3 id={titleId} className="text-2xl font-medium tracking-tight sm:text-3xl">{item.title}</h3>
           {byline && <p className="text-sm text-muted-foreground">{byline}</p>}
-          {item.description && <p className="max-w-md text-sm leading-relaxed text-muted-foreground">{item.description}</p>}
-          {item.tag && <p className="text-lg font-medium tabular-nums">{item.tag}</p>}
-          {item.details && item.details.length > 0 && (
+          {item.description && <p className="max-w-md text-sm leading-relaxed" style={{ color: "#f4f1ea" }}>{item.description}</p>}
+          {item.points && item.points.length > 0 && (
+            <ul className="grid max-w-md gap-3 text-left">
+              {item.points.map((point) => (
+                <li key={point.label}>
+                  <p className="text-sm font-medium" style={{ color: "#f4f1ea", lineHeight: 1.35 }}>{point.label}</p>
+                  <p className="mt-0.5 text-sm leading-relaxed" style={{ color: "#f4f1ea" }}>{point.text}</p>
+                </li>
+              ))}
+            </ul>
+          )}
+          {item.tag && !item.points?.length && <p className="text-lg font-medium tabular-nums">{item.tag}</p>}
+          {item.details && item.details.length > 0 && !item.points?.length && (
             <ul className="flex flex-wrap justify-center gap-2 md:justify-start">
-              {item.details.map((detail) => <li key={detail} className="rounded-full border border-border px-3 py-1 text-xs text-muted-foreground">{detail}</li>)}
+              {item.details.map((detail) => <li key={detail} className="rounded-full border border-border px-3 py-1 text-xs" style={{ color: "#f4f1ea" }}>{detail}</li>)}
             </ul>
           )}
           <div role="group" aria-label={`${labels.front} / ${labels.back}`} className="mt-1 inline-flex justify-center gap-6 md:justify-start">

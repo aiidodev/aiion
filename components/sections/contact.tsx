@@ -21,11 +21,11 @@ export function Contact() {
 
         <div className="contact-cta">
           <p className="kicker">
-            <i /> WhatsApp
+            <i /> Contato
           </p>
-          <p className="contact-cta-line">Sem formulário. Uma conversa no WhatsApp.</p>
+          <p className="contact-cta-line">Sem formulário. A conversa segue por aqui.</p>
           <a className="btn btn-red btn-lg" href={WA_DEFAULT} target="_blank" rel="noreferrer">
-            Falar no WhatsApp
+            Contato
           </a>
         </div>
       </div>
