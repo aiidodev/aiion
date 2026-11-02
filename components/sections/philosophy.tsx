@@ -7,7 +7,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const sentence =
-  "A aiion combina inteligência artificial, engenharia de software e automação para construir infraestruturas inteligentes que ajudam empresas a mover mais rápido, operar de forma mais inteligente e escalar globalmente.";
+  "A aiion desenha a marca para a pessoa guardar, o site para a conversa começar e o sistema para o lead não sumir. A IA atende no tom do negócio. Um time. O método D360.";
 
 export function Philosophy() {
   const ref = useRef<HTMLParagraphElement>(null);
@@ -42,9 +42,9 @@ export function Philosophy() {
       <div className="wrap philo-grid">
         <div className="reveal">
           <p className="kicker">
-            <i /> Nossa filosofia
+            <i /> A aiion
           </p>
-          <h2>Engenharia do Futuro da Inteligência</h2>
+          <h2>Não é uma página. É a operação.</h2>
           <p className="words" ref={ref}>
             {sentence.split(" ").map((word, index) => (
               <span key={`${word}-${index}`}>{word} </span>

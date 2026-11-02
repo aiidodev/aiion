@@ -1,95 +1,30 @@
 "use client";
 
-import { useEffect } from "react";
-import gsap from "gsap";
-import { NeuralField } from "@/components/neural-field";
+import MetroHero from "@/components/ui/scroll-locked-video-hero";
 import { WA_DEFAULT } from "@/lib/site";
 
-function Split({ text }: { text: string }) {
-  return (
-    <>
-      {text.split(" ").map((word, index, list) => (
-        <span className="word" key={`${word}-${index}`}>
-          {word.split("").map((char, charIndex) => (
-            <span className="char" key={charIndex}>
-              {char}
-            </span>
-          ))}
-          {index < list.length - 1 ? <span className="char">&nbsp;</span> : null}
-        </span>
-      ))}
-    </>
-  );
-}
-
 export function Hero() {
-  useEffect(() => {
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    let ctx: gsap.Context | undefined;
-
-    const play = () => {
-      if (reduce) return;
-      ctx?.revert();
-      ctx = gsap.context(() => {
-        gsap.from(".hero .char", {
-          yPercent: 120,
-          duration: 0.95,
-          stagger: 0.016,
-          ease: "power4.out",
-        });
-        gsap.from(".hero .rise", {
-          y: 22,
-          autoAlpha: 0,
-          duration: 0.8,
-          stagger: 0.08,
-          delay: 0.4,
-          ease: "power3.out",
-        });
-      });
-    };
-
-    if (!document.documentElement.classList.contains("booting")) play();
-    else window.addEventListener("aiion-ready", play, { once: true });
-
-    return () => {
-      window.removeEventListener("aiion-ready", play);
-      ctx?.revert();
-    };
-  }, []);
-
-  const moveSpot = (event: React.MouseEvent<HTMLElement>) => {
-    const rect = event.currentTarget.getBoundingClientRect();
-    event.currentTarget.style.setProperty("--x", `${event.clientX - rect.left}px`);
-    event.currentTarget.style.setProperty("--y", `${event.clientY - rect.top}px`);
-  };
-
   return (
-    <section className="hero" id="topo" onMouseMove={moveSpot}>
-      <div className="hero-grid" />
-      <div className="hero-spot" />
-      <NeuralField />
-      <div className="hero-layout">
-        <p className="eyebrow rise">Sistemas inteligentes</p>
-        <h1 aria-label="Engenharia de Inteligência">
-          <span aria-hidden="true">
-            <Split text="Engenharia" />
-            <br />
-            <Split text="de Inteligência" />
-          </span>
-        </h1>
-        <p className="lede rise">
-          Sistemas avançados de IA, automação e engenharia de software para empresas prontas para
-          escalar globalmente.
-        </p>
-        <div className="hero-cta rise">
-          <a className="btn btn-red btn-lg" href="#contato">
-            Quero meu projeto
+    <MetroHero
+      kicker="Marca, sistema e IA"
+      title={"Atenção em\ncliente."}
+      mark={{
+        name: "D360",
+        text: "Desenvolvimento, digitalização, divulgação e domínio.",
+      }}
+      tagline="Site, CRM e IA no mesmo time. A conversa começa. A operação não esquece."
+      scrollHint="DESÇA"
+      signature={false}
+      actions={
+        <>
+          <a className="btn btn-red btn-lg" href="/diagnostico">
+            Quero o diagnóstico
           </a>
-          <a className="btn btn-ghost btn-lg" href={WA_DEFAULT} target="_blank" rel="noreferrer">
+          <a className="btn btn-lg hero-link" href={WA_DEFAULT} target="_blank" rel="noreferrer">
             Falar no WhatsApp
           </a>
-        </div>
-      </div>
-    </section>
+        </>
+      }
+    />
   );
 }

@@ -30,31 +30,31 @@ export function Founder() {
   }, []);
 
   return (
-    <section className="section founder" id="fundadora">
+    <section className="section founder founder-page">
       <div className="wrap founder-grid">
         <div className="portrait">
           <div className="portrait-frame" ref={frameRef}>
             <Image
               src="/images/jhennifer.jpg"
-              alt="Jhenni Nascimento — Tecnologia & IA na aiion"
+              alt="Jhenni Nascimento, fundadora da aiion"
               fill
               sizes="(max-width: 860px) 100vw, 520px"
               style={{ objectFit: "cover", objectPosition: "50% 18%" }}
             />
           </div>
-          <div className="portrait-tag">Tecnologia & IA</div>
+          <div className="portrait-tag">Fundadora</div>
         </div>
         <div className="reveal">
           <p className="kicker">
             <i /> Fundadora
           </p>
-          <h2>Tecnologia, visão e inovação</h2>
-          <p className="role">Tecnologia & IA</p>
+          <h2>Engenharia e neurociência.</h2>
+          <p className="role">Software, IA e neurociência</p>
           <h3>Jhenni Nascimento</h3>
           <p className="lede">
-            Engenheira de software e IA, com pós em neurociência para entender ainda mais o cérebro
-            humano e replicar esse funcionamento na inteligência artificial. Criou a primeira
-            plataforma de pagamento com Pix Automático do Brasil.
+            Engenheira de software e IA, com pós em neurociência. Lê como a atenção decide e coloca
+            isso na página, no atendimento e nos sistemas da aiion. Criou a primeira plataforma de
+            pagamento com Pix Automático do Brasil.
           </p>
           <div className="contacts">
             <a href={WA_FOUNDER} target="_blank" rel="noreferrer">

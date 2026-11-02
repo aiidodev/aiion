@@ -5,14 +5,14 @@ import { usePathname } from "next/navigation";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { nav, links, COMPANY, CNPJ, WA_DEFAULT } from "@/lib/site";
+import { nav, links, CNPJ, WA_DEFAULT } from "@/lib/site";
+import HalftoneWordmarkFooter from "@/components/ui/halftone-wordmark-footer";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const rail = [
   { href: "/#servicos", label: "Serviços" },
   { href: "/#metodo", label: "D360" },
-  { href: "/#fundadora", label: "Fundadora" },
   { href: "/#comecar", label: "Começo" },
   { href: "/#contato", label: "Contato" },
 ];
@@ -20,16 +20,16 @@ const rail = [
 const places: Record<string, string> = {
   "/#servicos": "Serviços",
   "/#metodo": "D360",
-  "/#filosofia": "Filosofia",
-  "/#fundadora": "Fundadora",
-  "/#stack": "Stack",
+  "/fundadora": "Fundadora",
+  "/#stack": "Tecnologia",
   "/#comecar": "Começo",
   "/#perguntas": "Perguntas",
-  "/#notas": "Arquivo",
+  "/#notas": "Blog",
   "/#contato": "Contato",
   "/portfolio": "Portfólio",
   "/blog": "Blog",
   "/diagnostico": "Diagnóstico",
+  "/tecnologia": "Tecnologia",
 };
 
 export function Shell({ children }: { children: React.ReactNode }) {
@@ -234,8 +234,8 @@ export function Shell({ children }: { children: React.ReactNode }) {
         <div className="pre-inner">
           <div className="pre-top">
             <div>
-              <p className="pre-kicker">aiion // sistema</p>
-              <img src="/images/logo-lockup.png" alt="AIION, tecnologia e marketing" style={{ height: 108, marginTop: 12 }} />
+              <p className="pre-kicker">aiion // marca, sistema e IA</p>
+              <img src="/images/logo-lockup.png" alt="AIION, marca, sistema e IA" style={{ height: 108, marginTop: 12 }} />
             </div>
             <span className="pre-count" ref={countRef}>
               000
@@ -274,10 +274,10 @@ export function Shell({ children }: { children: React.ReactNode }) {
         </nav>
         <div className="nav-actions">
           <Link className="btn btn-ghost" href="/diagnostico">
-            Diagnóstico grátis
+            Diagnóstico
           </Link>
           <a className="btn btn-red" href={WA_DEFAULT} target="_blank" rel="noreferrer">
-            Falar no WhatsApp
+            WhatsApp
           </a>
           <button
             className={`menu-btn${open ? " open" : ""}`}
@@ -305,7 +305,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
           ))}
           <div className="mobile-actions">
             <Link className="btn btn-ghost" href="/diagnostico">
-              Diagnóstico grátis
+              Diagnóstico
             </Link>
             <a className="btn btn-red" href={WA_DEFAULT} target="_blank" rel="noreferrer">
               WhatsApp
@@ -326,77 +326,23 @@ export function Shell({ children }: { children: React.ReactNode }) {
 
       <main>{children}</main>
 
-      <footer className="footer">
-        <div className="wrap footer-grid">
-          <div>
-            <img src="/images/logo-lockup.png" alt="AIION, tecnologia e marketing" />
-          </div>
-          <div>
-            <h3>Mapa</h3>
-            <ul>
-              {nav.map((item) => (
-                <li key={item.href}>
-                  <Link href={item.href}>{item.label}</Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <h3>Ecossistema</h3>
-            <ul>
-              <li>
-                <a href={links.jingle} target="_blank" rel="noreferrer">
-                  aiion Jingle
-                </a>
-              </li>
-              <li>
-                <a href={links.leads} target="_blank" rel="noreferrer">
-                  aiion Leads
-                </a>
-              </li>
-              <li>
-                <Link href="/diagnostico">Diagnóstico grátis</Link>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h3>Redes</h3>
-            <ul>
-              <li>
-                <a href={links.instagram} target="_blank" rel="noreferrer">
-                  Instagram
-                </a>
-              </li>
-              <li>
-                <a href={links.facebook} target="_blank" rel="noreferrer">
-                  Facebook
-                </a>
-              </li>
-              <li>
-                <a href={links.linkedin} target="_blank" rel="noreferrer">
-                  LinkedIn
-                </a>
-              </li>
-              <li>
-                <a href={links.behance} target="_blank" rel="noreferrer">
-                  Behance
-                </a>
-              </li>
-              <li>
-                <a href={links.pinterest} target="_blank" rel="noreferrer">
-                  Pinterest
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div className="wrap legal">
-          <span>
-            {COMPANY} · CNPJ {CNPJ}
-          </span>
-          <span>© 2026 aiion. Todos os direitos reservados.</span>
-        </div>
-      </footer>
+      <HalftoneWordmarkFooter
+        wordmark="aiion"
+        label="Atenção em cliente."
+        meta={`© 2026 aiion · CNPJ ${CNPJ}`}
+        fontFamily='var(--font-display), "Syne", sans-serif'
+        monoFamily="var(--font-sans), sans-serif"
+        palette={{ background: "#070708", ink: "#f4f1ea", warm: "#ffffff" }}
+        backToTopLabel="Voltar ao topo ↑"
+        height="520px"
+        columns={[
+          { title: "Mapa", links: nav.map((item) => ({ label: item.label, href: item.href })) },
+          {
+            title: "Redes",
+            links: [{ label: "Instagram", href: links.instagram, external: true }],
+          },
+        ]}
+      />
     </>
   );
 }

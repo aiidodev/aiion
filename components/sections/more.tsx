@@ -1,5 +1,7 @@
 import Link from "next/link";
-import { posts, questions, startSteps } from "@/lib/site";
+import { FaqDrawer } from "@/components/ui/faq-drawer";
+import { HowItWorks } from "@/components/ui/how-it-works";
+import { posts } from "@/lib/site";
 
 export function Start() {
   return (
@@ -10,23 +12,15 @@ export function Start() {
             <p className="kicker">
               <i /> Começo
             </p>
-            <h2>Como um projeto entra</h2>
+            <h2>Do diagnóstico ao uso.</h2>
           </div>
           <p className="lede">
-            Do diagnóstico ao uso. Quatro passos, sem fila entre a conversa e a execução.
+            Quatro passos. O diagnóstico mostra a camada. A conversa segue no WhatsApp de quem constrói.
           </p>
         </div>
-        <ol className="index">
-          {startSteps.map((step) => (
-            <li key={step.index}>
-              <span>{step.index}</span>
-              <h3>{step.title}</h3>
-              <p>{step.text}</p>
-            </li>
-          ))}
-        </ol>
+        <HowItWorks />
         <p className="more-link">
-          <Link href="/diagnostico">Fazer o diagnóstico grátis</Link>
+          <Link href="/diagnostico">Quero o diagnóstico</Link>
         </p>
       </div>
     </section>
@@ -35,26 +29,9 @@ export function Start() {
 
 export function Questions() {
   return (
-    <section className="section" id="perguntas">
-      <div className="wrap">
-        <div className="section-head reveal">
-          <div>
-            <p className="kicker">
-              <i /> Perguntas
-            </p>
-            <h2>O que costuma travar a decisão</h2>
-          </div>
-        </div>
-        <div className="faq">
-          {questions.map((item) => (
-            <details key={item.q}>
-              <summary>{item.q}</summary>
-              <p>{item.a}</p>
-            </details>
-          ))}
-        </div>
-      </div>
-    </section>
+    <div id="perguntas">
+      <FaqDrawer />
+    </div>
   );
 }
 
@@ -67,11 +44,11 @@ export function Notes() {
         <div className="section-head reveal">
           <div>
             <p className="kicker">
-              <i /> Arquivo
+              <i /> Blog
             </p>
-            <h2>Notas do blog</h2>
+            <h2>Notas da aiion.</h2>
           </div>
-          <p className="lede">Textos curtos sobre IA, automação e a operação da empresa.</p>
+          <p className="lede">Atenção, IA e o trabalho que o sistema pode assumir.</p>
         </div>
         <div className="notes">
           {notes.map((post) => (
@@ -85,7 +62,7 @@ export function Notes() {
           ))}
         </div>
         <p className="more-link">
-          <Link href="/blog">Ler o blog</Link>
+          <Link href="/blog">Ir para o blog</Link>
         </p>
       </div>
     </section>

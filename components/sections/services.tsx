@@ -1,12 +1,49 @@
 "use client";
 
-import { services, marqueeItems } from "@/lib/site";
+import PictureRailGallery from "@/components/ui/picture-rail-gallery";
+import type { PictureFrameStyle, PictureRailItem } from "@/components/ui/picture-rail-gallery";
+import { marqueeItems, services } from "@/lib/site";
+
+const plates = [
+  "/images/service-01.jpg",
+  "/images/service-02.jpg",
+  "/images/service-03.jpg",
+  "/images/service-04.jpg",
+  "/images/service-05.jpg",
+  "/images/service-06.jpg",
+];
+
+const details = [
+  ["Nome", "Manual", "Logo"],
+  ["Site", "Página de venda", "Loja"],
+  ["Lead", "Cliente", "Venda"],
+  ["Atendimento", "Qualificação"],
+  ["Redes", "Tráfego", "WhatsApp"],
+  ["Sistema", "App", "Lojas"],
+];
+
+const frames: PictureFrameStyle[] = ["black", "white", "oak", "black", "oak", "white"];
+const mats = [true, true, false, true, true, false];
+const drops = [0.02, 0.1, -0.02, 0.14, 0.05, 0];
+
+const prints: PictureRailItem[] = services.map((service, index) => ({
+  id: service.index,
+  title: service.title,
+  image: plates[index] ?? plates[0],
+  aspect: 1,
+  frame: frames[index],
+  mat: mats[index],
+  drop: drops[index],
+  tag: service.index,
+  description: service.text,
+  details: details[index],
+}));
 
 export function Services() {
   const loop = [...marqueeItems, ...marqueeItems];
 
   return (
-    <>
+    <div className="services-band">
       <div className="marquee" aria-hidden="true">
         <div className="marquee-track">
           {loop.map((item, index) => (
@@ -14,32 +51,20 @@ export function Services() {
           ))}
         </div>
       </div>
-      <section className="section" id="servicos">
-        <div className="wrap">
-          <div className="section-head reveal">
-            <div>
-              <p className="kicker">
-                <i /> O que fazemos
-              </p>
-              <h2>Criação encontra tecnologia</h2>
-            </div>
-            <p className="lede">
-              Um hub que reúne marca, design e conteúdo com sistemas, automação e inteligência
-              artificial. Em vez de vários fornecedores, um time que pensa a estética e a engenharia
-              juntas.
-            </p>
-          </div>
-          <ol className="index">
-            {services.map((service) => (
-              <li key={service.index}>
-                <span>{service.index}</span>
-                <h3>{service.title}</h3>
-                <p>{service.text}</p>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </section>
-    </>
+      <PictureRailGallery
+        id="servicos"
+        items={prints}
+        eyebrow="Serviços"
+        heading="O que a sua operação recebe."
+        caption="Marca, site, CRM, IA, redes, WhatsApp e app. Cada frente com uma entrega. Um time só."
+        autoplay
+        labels={{ front: "Frente", back: "Verso", close: "Fechar", open: "Ver este serviço" }}
+        action={
+          <a className="btn btn-red" href="/diagnostico">
+            Quero o diagnóstico
+          </a>
+        }
+      />
+    </div>
   );
 }

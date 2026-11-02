@@ -27,12 +27,11 @@ export function BlogView() {
     <div className="wrap" style={{ paddingBottom: "4rem" }}>
       <header className="page-hero">
         <p className="kicker">
-          <i /> Blog aiion
+          <i /> Blog
         </p>
-        <h1>Inteligência artificial e tecnologia, sem hype</h1>
+        <h1>Notas da aiion.</h1>
         <p className="lede" style={{ marginTop: "1rem" }}>
-          50 artigos publicados desde janeiro de 2026 sobre IA, automação, engenharia e o impacto
-          disso tudo em operações reais.
+          Atenção, IA e o trabalho que o sistema pode assumir.
         </p>
       </header>
       <div className="filters">
@@ -105,14 +104,14 @@ export function BlogView() {
       </div>
       <div className="cta-band">
         <div>
-          <h2>Quer saber o que dá para automatizar na sua operação?</h2>
+          <h2>Levar isso para a empresa.</h2>
           <p className="lede" style={{ marginTop: "0.6rem" }}>
-            Em poucos minutos, nosso diagnóstico mapeia gargalos e devolve um roteiro do método
-            D360. Sem custo e sem compromisso. Dá para imprimir ou salvar em PDF.
+            O diagnóstico D360 mostra a camada que falta: marca, site, CRM, IA, redes, tráfego,
+            WhatsApp ou app. Sem custo. Dá para imprimir ou salvar em PDF.
           </p>
         </div>
         <a className="btn btn-red" href="/diagnostico">
-          Fazer diagnóstico gratuito
+          Quero o diagnóstico
         </a>
       </div>
     </div>

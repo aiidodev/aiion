@@ -60,7 +60,7 @@ export function DiagnosticView() {
   const activeLayers = layers.length ? layers : phases;
 
   const message = [
-    "Olá! Quero o diagnóstico grátis da aiion.",
+    "Olá! Quero o diagnóstico do método D360 da aiion.",
     "",
     `Nome: ${data.nome}`,
     `WhatsApp: ${data.whatsapp}`,
@@ -75,12 +75,12 @@ export function DiagnosticView() {
     <div className="wrap" style={{ paddingBottom: "5rem" }}>
       <header className="page-hero">
         <p className="kicker">
-          <i /> Diagnóstico grátis
+          <i /> Diagnóstico
         </p>
-        <h1>Onde a sua operação trava?</h1>
+        <h1>Diagnóstico D360.</h1>
         <p className="lede" style={{ marginTop: "1rem" }}>
-          Em poucos minutos o roteiro aponta as camadas do método D360 que fazem sentido agora. Sem
-          custo e sem compromisso. No final, você fala direto no WhatsApp {PHONE_LABEL}.
+          Uma leitura de marca, site, CRM, IA, redes, tráfego, WhatsApp e app. Você vê a camada que
+          falta. Sem custo. A conversa segue no WhatsApp {PHONE_LABEL}.
         </p>
       </header>
 
@@ -154,7 +154,7 @@ export function DiagnosticView() {
                     }}
                   />
                   <p className="note" style={{ marginBottom: "0.6rem" }}>
-                    O que você precisa agora?
+                    O que a empresa precisa agora?
                   </p>
                   <div className="choices">
                     {needs.map((item) => (
@@ -173,12 +173,12 @@ export function DiagnosticView() {
               ) : null}
               {step === 2 ? (
                 <label className="note">
-                  Qual é o momento da empresa?
+                  O que está travando a operação?
                   <textarea
                     required
                     value={data.meta}
                     onChange={(event) => setData({ ...data, meta: event.target.value })}
-                    placeholder="O que você precisa? (marca, site, CRM, IA, tráfego...)"
+                    placeholder="Marca, site, CRM, IA, redes, WhatsApp ou app"
                     style={{
                       width: "100%",
                       marginTop: "0.5rem",
@@ -197,27 +197,26 @@ export function DiagnosticView() {
                     Voltar
                   </button>
                 ) : (
-                  <span className="note">Leva menos de um minuto.</span>
+                  <span className="note">Leva poucos minutos.</span>
                 )}
                 <button className="btn btn-red" type="submit">
-                  {step === 2 ? "Ver roteiro" : "Continuar"}
+                  {step === 2 ? "Ver o diagnóstico" : "Seguir"}
                 </button>
               </div>
             </>
           ) : (
             <div className="plan">
               <p className="kicker">
-                <i /> Roteiro inicial
+                <i /> D360
               </p>
               <h2 style={{ fontSize: "2rem" }}>
-                {data.nome.split(" ")[0]}, este é o recorte do D360 para o seu momento.
+                {data.nome.split(" ")[0]}, estas são as camadas que a aiion indica agora.
               </h2>
               <p className="lede">
                 {data.segmento
                   ? `Segmento informado: ${data.segmento}. `
                   : ""}
-                O escopo final é ajustado com quem executa. Este roteiro só organiza as camadas — não
-                é uma estimativa de faturamento.
+                Estas são as camadas para entrar agora. O escopo fecha no WhatsApp, com quem constrói.
               </p>
               {activeLayers.map((layer) => (
                 <article key={layer.id}>
@@ -237,7 +236,7 @@ export function DiagnosticView() {
                   Imprimir ou salvar PDF
                 </button>
                 <a className="btn btn-red" href={waLink(message)} target="_blank" rel="noreferrer">
-                  Enviar e falar no WhatsApp
+                  Enviar no WhatsApp
                 </a>
               </div>
             </div>

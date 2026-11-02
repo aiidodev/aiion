@@ -3,8 +3,7 @@ import { PortfolioView } from "@/components/portfolio-view";
 
 export const metadata: Metadata = {
   title: "Portfólio",
-  description:
-    "Marcas, sites, sistemas, social, vídeos e livros feitos pela aiion. Projetos, leads e clientes.",
+  description: "Marca, site e sistema que a aiion colocou no ar.",
 };
 
 export default function PortfolioPage() {

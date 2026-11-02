@@ -8,10 +8,12 @@ export function waLink(text: string) {
 }
 
 export const WA_DEFAULT = waLink(
-  "Olá! Vim pelo site da aiion e quero saber mais.",
+  "Olá! Vim pelo site da aiion. Quero o diagnóstico do D360: marca, sistema e IA.",
 );
 
-export const WA_FOUNDER = waLink("Olá Jhenni, vim pelo site da aiion!");
+export const WA_FOUNDER = waLink(
+  "Olá, Jhenni! Vim pelo site da aiion e quero conversar sobre o método D360.",
+);
 
 export const links = {
   jhenni: "https://jhenni.com.br/",
@@ -28,7 +30,7 @@ export const links = {
 export const nav = [
   { href: "/#servicos", label: "Serviços" },
   { href: "/#metodo", label: "Método D360" },
-  { href: "/#fundadora", label: "Fundadora" },
+  { href: "/fundadora", label: "Fundadora" },
   { href: "/portfolio", label: "Portfólio" },
   { href: "/blog", label: "Blog" },
   { href: "/#contato", label: "Contato" },
@@ -37,35 +39,35 @@ export const nav = [
 export const services = [
   {
     index: "01",
-    title: "Marca completa",
-    text: "Naming, manual de marca, estratégia e aplicação: logo, papelaria e identidade visual. A base que faz o negócio nascer com autoridade e ser reconhecido em qualquer canal.",
+    title: "Marca",
+    text: "Nome, manual, logo e papelaria. A pessoa reconhece a empresa antes de ler a oferta.",
     wide: true,
   },
   {
     index: "02",
-    title: "Site, Landing Page ou E-commerce",
-    text: "Site institucional, página de conversão ou loja virtual, conforme o seu momento. O ponto central onde a marca vira presença e venda.",
+    title: "Site e loja",
+    text: "Institucional, página de venda ou loja. A visita entende o que você faz e segue para a conversa.",
   },
   {
     index: "03",
-    title: "Sistema de CRM e gestão",
-    text: "Uma plataforma sua para gerir leads, clientes, vendas e o próprio site. Todo contato entra, é organizado e acompanhado. Nada se perde.",
+    title: "CRM",
+    text: "Lead, cliente e venda na mesma plataforma. O que entrou não some entre o clique e o pedido.",
   },
   {
     index: "04",
-    title: "IA de atendimento 24/7",
-    text: "Uma IA que atende, tira dúvidas e qualifica clientes o tempo todo, com o tom e a estratégia do seu negócio. Inclusa em todo sistema desenvolvido pela aiion.",
+    title: "IA de atendimento",
+    text: "Responde, tira dúvida e qualifica no tom do negócio, de dia e de noite. Entra em todo sistema da aiion.",
     featured: true,
   },
   {
     index: "05",
-    title: "Redes, tráfego e conteúdo",
-    text: "Criação e ativação das redes sociais, gestão de tráfego pago, disparos de WhatsApp com API oficial, criativos em imagem e vídeo e textos para blog e vendas.",
+    title: "Redes e WhatsApp",
+    text: "O anúncio chama. O WhatsApp oficial conversa. Tráfego com a verba no controle e o retorno medido, criativo e texto de venda.",
   },
   {
     index: "06",
-    title: "Sistemas sob medida, apps e automação",
-    text: "Desenvolvimento de sistemas próprios, aplicativos Android e iOS, publicação nas lojas e automação dos principais processos do negócio com IA.",
+    title: "Sistema e app",
+    text: "Sistema próprio e app nas lojas Android e iOS. A rotina segue quando a equipe sai.",
   },
 ];
 
@@ -73,44 +75,44 @@ export const phases = [
   {
     id: "D1",
     title: "Desenvolvimento",
-    kicker: "A fundação",
+    kicker: "A empresa ganha cara, endereço e quem atende",
     items: [
-      "Marca completa: naming, manual, estratégia e aplicação",
-      "Site institucional, landing page ou e-commerce",
-      "Sistema de CRM e gestão próprio",
-      "IA de atendimento estratégico 24/7",
+      "Nome, manual e a cara da marca",
+      "Site, página de venda ou loja",
+      "CRM com lead, cliente e venda juntos",
+      "IA de atendimento 24/7, no tom do negócio",
     ],
   },
   {
     id: "D2",
     title: "Digitalização",
-    kicker: "Ocupar o digital",
+    kicker: "A marca aparece onde o cliente já decide",
     items: [
-      "Estruturação e ativação de Facebook, Instagram e TikTok",
+      "Facebook, Instagram e TikTok no ar",
       "LinkedIn, YouTube e Google Meu Negócio",
-      "Marca encontrável e profissional onde o cliente já está",
+      "A marca achável onde a pessoa já passa",
     ],
   },
   {
     id: "D3",
     title: "Divulgação",
-    kicker: "Gerar demanda e vender",
+    kicker: "O anúncio chama. O WhatsApp puxa a conversa.",
     items: [
-      "Tráfego pago com verba controlada e retorno medido",
-      "Disparos e automações de WhatsApp com API oficial",
-      "Criativos, copy e conteúdo para blog e páginas de venda",
-      "Reuniões estratégicas e plano de expansão",
+      "Tráfego pago com a verba no controle e o retorno medido",
+      "WhatsApp na API oficial: disparo e automação",
+      "Criativo, copy, blog e página de venda",
+      "Reunião e plano de expansão",
     ],
   },
   {
     id: "D4",
     title: "Domínio",
-    kicker: "Dominar e automatizar",
+    kicker: "A equipe opera. A IA continua a conversa.",
     items: [
-      "Treinamento da equipe comercial",
-      "Treinamento no uso dos sistemas",
-      "Automação dos principais processos com IA",
-      "Sistemas sob medida e aplicativos mobile",
+      "Treino da equipe comercial",
+      "Treino para operar os sistemas",
+      "O que se repete passa a rodar com IA",
+      "Sistema sob medida e app nas lojas",
     ],
   },
 ];
@@ -163,24 +165,24 @@ export const stack = [
 
 export const differentials = [
   {
-    title: "Mentalidade de desenvolvimento AI-first",
-    text: "A inteligência artificial entra na arquitetura do sistema, não como um acessório colocado no final. Atendimento, qualificação e processos já nascem com esse critério.",
+    title: "IA dentro do sistema",
+    text: "Atende e qualifica no tom da marca, de dia e de noite. Não é um extra colado no fim do projeto.",
   },
   {
-    title: "Arquitetura orientada à automação",
-    text: "O que se repete deixa de depender de alguém lembrar. Lead, atendimento e rotina operacional passam a seguir um fluxo.",
+    title: "O lead não some",
+    text: "Clique, conversa e pedido ficam no mesmo lugar. A equipe retoma de onde a conversa parou.",
   },
   {
-    title: "Escalabilidade global",
-    text: "A base é a mesma do primeiro cliente ao volume maior: marca, sistema e operação no mesmo desenho, sem refazer tudo quando a empresa cresce.",
+    title: "Entra o que trava agora",
+    text: "Marca, site, CRM, redes, WhatsApp ou app. O diagnóstico mostra a camada que a venda está esperando.",
   },
   {
-    title: "Engenharia de nível empresarial",
-    text: "Código, dados e acesso tratados com o cuidado de um sistema que a empresa vai usar todo dia, não de uma página que se troca na semana seguinte.",
+    title: "Feito para o dia seguinte",
+    text: "Código, dado e acesso são ferramenta de trabalho, não uma página que se troca na semana seguinte.",
   },
   {
-    title: "Ciclos rápidos de inovação",
-    text: "O escopo é ajustado ao momento. Entrega visível, conversa com quem executa e correção no caminho, sem um projeto que só aparece meses depois.",
+    title: "Quem constrói responde",
+    text: "A conversa do site cai no WhatsApp de quem desenha. Sem fila entre você e a entrega.",
   },
 ];
 
@@ -188,62 +190,63 @@ export const startSteps = [
   {
     index: "01",
     title: "Diagnóstico",
-    text: "Um formulário curto mapeia marca, site, CRM, IA, redes, tráfego, WhatsApp, app e automação. O recorte sai nas camadas do D360.",
+    text: "Uma leitura curta de marca, site, CRM, IA, redes, tráfego, WhatsApp e app. A resposta sai nas camadas do D360.",
   },
   {
     index: "02",
-    title: "Conversa com quem executa",
-    text: "O retorno vai para o WhatsApp. Não há uma fila entre você e a pessoa que vai desenhar e construir.",
+    title: "WhatsApp",
+    text: "A conversa continua no WhatsApp. Quem desenha e constrói é quem responde.",
   },
   {
     index: "03",
-    title: "Escopo do momento",
-    text: "Nem toda empresa precisa das quatro camadas de uma vez. O método é ajustado ao que trava a operação agora.",
+    title: "A camada que falta",
+    text: "Não precisa das quatro camadas no primeiro dia. Entra o ponto em que a venda trava.",
   },
   {
     index: "04",
-    title: "Entrega e domínio",
-    text: "Marca, sistema, conteúdo e automações entram em uso. A equipe é treinada para operar o que foi construído.",
+    title: "Uso com a equipe",
+    text: "Marca, sistema e atendimento passam a ser usados. A equipe opera o que a aiion entregou.",
   },
 ];
 
 export const questions = [
   {
-    q: "A IA de atendimento é um adicional?",
-    a: "Não. Ela é inclusa em todo sistema desenvolvido pela aiion, com o tom e a estratégia do negócio, para atender e qualificar o tempo todo.",
+    q: "Vocês entregam ou só desenham?",
+    a: "Entregamos. Marca, site, loja, CRM, IA, redes, tráfego, WhatsApp, sistema e app nas lojas. O diagnóstico diz por onde começar.",
   },
   {
-    q: "Preciso contratar o método D360 inteiro?",
-    a: "Não. O diagnóstico mostra as camadas e o escopo é ajustado ao momento: marca, site, CRM, redes, tráfego, WhatsApp, app ou automação.",
+    q: "Preciso contratar as quatro camadas?",
+    a: "Não. Entra a camada que trava a venda agora. Pode ser só marca, site, CRM, redes, WhatsApp ou app.",
   },
   {
-    q: "Vocês publicam aplicativo nas lojas?",
-    a: "Sim. Sistemas sob medida e aplicativos Android e iOS, com publicação nas lojas, fazem parte da etapa de domínio do método.",
+    q: "A IA é cobrada à parte?",
+    a: "Não. Entra no sistema, no tom do negócio, para atender e qualificar. Não é um extra no fim do projeto.",
   },
   {
-    q: "O WhatsApp usa a API oficial?",
-    a: "Sim. Disparos e automações de WhatsApp são feitos com a API oficial, junto de tráfego, criativos e conteúdo.",
+    q: "Quanto custa?",
+    a: "O valor segue o que entra. O diagnóstico mostra o escopo. A proposta sai no WhatsApp, sem tabela genérica no site.",
   },
   {
-    q: "Quem conduz o projeto?",
-    a: "Quem executa. A conversa do site vai direto para o WhatsApp da aiion, sem intermediário comercial.",
+    q: "O WhatsApp é a API oficial?",
+    a: "Sim. Disparo e automação saem pela API oficial, com criativo e texto de venda.",
   },
   {
-    q: "Como a neurociência entra na IA?",
-    a: "Jhenni Nascimento é engenheira de software e IA e tem pós em neurociência. A formação serve para entender melhor o cérebro humano e replicar esse funcionamento na inteligência artificial dos sistemas.",
+    q: "O que a neurociência faz na aiion?",
+    a: "Jhenni Nascimento é engenheira de software e IA e tem pós em neurociência. A formação lê como a atenção decide e coloca isso na página, no atendimento e na IA.",
   },
 ];
 
 export const marqueeItems = [
-  "Criação encontra tecnologia",
-  "IA 24/7",
-  "Método D360",
   "Marca",
+  "Sistema",
+  "IA",
+  "Neurociência",
+  "Site e loja",
   "CRM",
-  "Automação",
-  "Apps iOS e Android",
-  "Tráfego",
+  "Redes e tráfego",
   "WhatsApp API",
+  "App nas lojas",
+  "Método D360",
 ];
 
 export type ProjectKind =
