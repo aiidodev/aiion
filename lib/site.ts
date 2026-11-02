@@ -21,7 +21,7 @@ export const links = {
   instagram: "https://www.instagram.com/aiido.ai/",
   facebook: "https://www.facebook.com/profile.php?id=61578655212149",
   linkedin: "https://www.linkedin.com/in/aiido-ai-0897683b9/",
-  behance: "https://www.behance.net/aiidoaiido",
+  behance: "https://www.behance.net/aiionai",
   pinterest: "https://br.pinterest.com/aiidoaiido/",
   jingle: "https://aiidojingle.com.br/",
   leads: "https://aiidoleads.com.br/",

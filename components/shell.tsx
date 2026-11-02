@@ -334,7 +334,10 @@ export function Shell({ children }: { children: React.ReactNode }) {
           { title: "Mapa", links: nav.map((item) => ({ label: item.label, href: item.href })) },
           {
             title: "Redes",
-            links: [{ label: "Instagram", href: links.instagram, external: true }],
+            links: [
+              { label: "Instagram", href: links.instagram, external: true },
+              { label: "Behance", href: links.behance, external: true },
+            ],
           },
         ]}
       />

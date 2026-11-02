@@ -1,4 +1,4 @@
-import { COMPANY, CNPJ, PHONE_LABEL, WA_DEFAULT } from "@/lib/site";
+import { WA_DEFAULT } from "@/lib/site";
 
 export function Contact() {
   return (
@@ -11,11 +11,6 @@ export function Contact() {
           <h2>A conversa começa aqui.</h2>
           <p className="lede">
             Conta o que trava: marca, site, CRM, IA, redes, WhatsApp ou app. Quem desenha o D360 responde.
-          </p>
-          <p className="note" style={{ marginTop: "1.4rem" }}>
-            {PHONE_LABEL}
-            <br />
-            {COMPANY} · CNPJ {CNPJ}
           </p>
         </div>
 
